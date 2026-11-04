@@ -13,13 +13,13 @@
     
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #111827;
-            --card-border: #1f293d;
-            --accent-blue: #2563eb;
-            --accent-glow: #3b82f6;
-            --text-main: #ffffff;
-            --text-muted: #e2e8f0;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --primary-blue: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
         }
 
         body {
@@ -29,25 +29,31 @@
             scroll-behavior: smooth;
         }
 
-        /* Navbar */
+        /* Navbar & Hover Effect */
         .navbar {
-            background-color: rgba(17, 24, 39, 0.95);
+            background-color: #ffffff;
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
         .navbar-brand {
             font-weight: 800;
             letter-spacing: -0.5px;
-            color: #ffffff !important;
+            color: var(--text-main) !important;
         }
         .nav-link {
-            color: #ffffff !important;
-            font-weight: 500;
+            color: var(--text-muted) !important;
+            font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.25s ease-in-out;
         }
+        /* Hover Blue Effect & Active State */
         .nav-link:hover, .nav-link.active {
-            color: var(--accent-glow) !important;
+            color: #ffffff !important;
+            background-color: var(--primary-blue) !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         /* Hero Section */
@@ -59,10 +65,10 @@
             font-weight: 800;
             line-height: 1.15;
             letter-spacing: -1px;
-            color: #ffffff;
+            color: var(--text-main);
         }
         .hero-subtitle {
-            color: #60a5fa;
+            color: var(--primary-blue);
             font-weight: 700;
         }
 
@@ -72,18 +78,20 @@
             border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 28px;
-            transition: transform 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
         .card-custom:hover {
             transform: translateY(-4px);
-            border-color: #3b82f6;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+            border-color: #cbd5e1;
         }
 
         /* Tech Stack Badges */
         .tech-badge {
-            background-color: #1e293b;
-            color: #ffffff;
-            border: 1px solid #475569;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #dbeafe;
             padding: 6px 14px;
             border-radius: 8px;
             font-size: 0.85rem;
@@ -97,10 +105,10 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 8px;
-            color: #ffffff;
+            color: var(--text-main);
         }
         .section-subtitle {
-            color: #cbd5e1;
+            color: var(--text-muted);
             font-size: 1rem;
             margin-bottom: 32px;
         }
@@ -109,7 +117,7 @@
         .timeline-item {
             position: relative;
             padding-left: 28px;
-            border-left: 2px solid var(--card-border);
+            border-left: 2px solid #cbd5e1;
             margin-bottom: 24px;
         }
         .timeline-item::before {
@@ -120,21 +128,39 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: var(--accent-blue);
+            background-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px #dbeafe;
         }
 
         /* Buttons */
-        .btn-primary-custom {
-            background-color: var(--accent-blue);
+        .btn-custom-blue {
+            background-color: var(--primary-blue);
             color: white;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 10px;
             padding: 10px 24px;
             border: none;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s;
         }
-        .btn-primary-custom:hover {
-            background-color: #1d4ed8;
+        .btn-custom-blue:hover {
+            background-color: var(--primary-hover);
             color: white;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        .btn-outline-custom {
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 10px 24px;
+            background-color: #ffffff;
+            transition: all 0.2s;
+        }
+        .btn-outline-custom:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+            color: var(--text-main);
         }
     </style>
 </head>
@@ -143,10 +169,10 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand text-white" href="#">
-                <span class="text-primary"><i class="fa-solid fa-code me-2"></i></span>Abdishakour
+            <a class="navbar-brand" href="#">
+                <span style="color: var(--primary-blue);"><i class="fa-solid fa-code me-2"></i></span>Abdishakour
             </a>
-            <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -169,12 +195,12 @@
                 <div class="col-lg-10">
                     <p class="hero-subtitle fs-5 mb-2">Hi, I'm Abdishakour Abdilahi Nour</p>
                     <h1 class="hero-title mb-3">Full-Stack Web Developer & BBIT Student.</h1>
-                    <p class="text-white fs-5 mb-4" style="max-width: 650px; opacity: 0.95;">
+                    <p class="text-muted fs-5 mb-4" style="max-width: 650px;">
                         I build modern, efficient digital solutions using full-stack web technologies, clean architecture, and robust database management systems.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="#projects" class="btn btn-primary-custom">View Projects <i class="fa-solid fa-arrow-right ms-2"></i></a>
-                        <a href="#contact" class="btn btn-outline-light rounded-3 px-4">Contact Me</a>
+                        <a href="#projects" class="btn btn-custom-blue">View Projects <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                        <a href="#contact" class="btn btn-outline-custom">Contact Me</a>
                     </div>
                 </div>
             </div>
@@ -183,8 +209,8 @@
         <!-- About Me Section -->
         <section id="about" class="py-5">
             <div class="card-custom">
-                <h2 class="section-title h4"><i class="fa-regular fa-user text-primary me-2"></i>About Me</h2>
-                <p class="text-white leading-relaxed mb-0" style="opacity: 0.95;">
+                <h2 class="section-title h4"><i class="fa-regular fa-user me-2" style="color: var(--primary-blue);"></i>About Me</h2>
+                <p class="text-muted leading-relaxed mb-0" style="font-size: 1.05rem; line-height: 1.7;">
                     I am a Business Information Technology (BBIT) student at Amoud University, specializing in web systems development and database management. My goal is to build modern, efficient technological solutions through clean programming and robust architecture.
                 </p>
             </div>
@@ -198,7 +224,7 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="card-custom h-100">
-                        <h3 class="h5 text-white mb-3"><i class="fa-solid fa-code text-primary me-2"></i>Languages & Frontend</h3>
+                        <h3 class="h5 text-dark mb-3"><i class="fa-solid fa-code me-2" style="color: var(--primary-blue);"></i>Languages & Frontend</h3>
                         <div>
                             <span class="tech-badge">PHP</span>
                             <span class="tech-badge">JavaScript (Vanilla JS)</span>
@@ -214,7 +240,7 @@
 
                 <div class="col-md-6">
                     <div class="card-custom h-100">
-                        <h3 class="h5 text-white mb-3"><i class="fa-solid fa-database text-primary me-2"></i>Databases & Developer Tools</h3>
+                        <h3 class="h5 text-dark mb-3"><i class="fa-solid fa-database me-2" style="color: var(--primary-blue);"></i>Databases & Developer Tools</h3>
                         <div>
                             <span class="tech-badge">MySQL</span>
                             <span class="tech-badge">SQL Server</span>
@@ -240,11 +266,11 @@
                 <div class="col-12">
                     <div class="card-custom">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h4 text-white fw-bold mb-0">Smart Printing Order & Production Management Platform</h3>
-                            <span class="badge bg-primary px-3 py-2">Featured Project</span>
+                            <h3 class="h4 text-dark fw-bold mb-0">Smart Printing Order & Production Management Platform</h3>
+                            <span class="badge px-3 py-2" style="background-color: var(--primary-blue); color: white; font-weight: 600;">Featured Project</span>
                         </div>
-                        <p class="text-info small mb-3 fw-bold">Client / Target: TusmoJet / CasriJet Digital Printing</p>
-                        <p class="text-white mb-3" style="opacity: 0.95;">
+                        <p class="small mb-3 fw-bold" style="color: var(--primary-blue);">Client / Target: TusmoJet / CasriJet Digital Printing</p>
+                        <p class="text-muted mb-3" style="font-size: 1.05rem;">
                             A comprehensive system for managing printing orders, production scheduling, automated quotation generation, and role-segregated admin/staff dashboards built with PHP and JavaScript.
                         </p>
                         <div>
@@ -260,8 +286,8 @@
                 <!-- Project 2 -->
                 <div class="col-md-6">
                     <div class="card-custom h-100">
-                        <h3 class="h5 text-white mb-2">Centralized School Management System (SMS)</h3>
-                        <p class="text-white small mb-3" style="opacity: 0.95;">
+                        <h3 class="h5 text-dark mb-2">Centralized School Management System (SMS)</h3>
+                        <p class="text-muted small mb-3">
                             A custom PHP-based procedural application designed to handle school data, student records, subjects, and multi-tenant user authentication constraints.
                         </p>
                         <div>
@@ -275,8 +301,8 @@
                 <!-- Project 3 -->
                 <div class="col-md-6">
                     <div class="card-custom h-100">
-                        <h3 class="h5 text-white mb-2">Centralized Hospital Network Website</h3>
-                        <p class="text-white small mb-3" style="opacity: 0.95;">
+                        <h3 class="h5 text-dark mb-2">Centralized Hospital Network Website</h3>
+                        <p class="text-muted small mb-3">
                             A responsive front-end system blueprint tailored for Borama city, developed using Bootstrap 5 and the JavaScript Geolocation API.
                         </p>
                         <div>
@@ -296,9 +322,9 @@
 
             <div class="card-custom">
                 <div class="timeline-item">
-                    <h3 class="h5 text-white mb-1">Web Development & Graphics Intern</h3>
-                    <p class="text-info small mb-2 fw-bold">CasriJet Digital Printing — Borama</p>
-                    <p class="text-white mb-0" style="opacity: 0.95;">
+                    <h3 class="h5 text-dark mb-1">Web Development & Graphics Intern</h3>
+                    <p class="small mb-2 fw-bold" style="color: var(--primary-blue);">CasriJet Digital Printing — Borama</p>
+                    <p class="text-muted mb-0">
                         Successfully completed an 8-week professional internship, contributing to digital printing workflows, graphic layout designs, and modern system adaptations within the firm.
                     </p>
                 </div>
@@ -309,16 +335,16 @@
         <section id="contact" class="py-5 mb-5">
             <div class="card-custom text-center py-5">
                 <h2 class="section-title h3 mb-2">Let's Connect</h2>
-                <p class="text-white mb-4" style="opacity: 0.95;">Feel free to reach out for collaborations, inquiries, or project discussions.</p>
+                <p class="text-muted mb-4">Feel free to reach out for collaborations, inquiries, or project discussions.</p>
                 
                 <div class="d-flex justify-content-center gap-3 flex-wrap">
-                    <a href="mailto:shagtagoney@gmail.com" class="btn btn-primary-custom">
+                    <a href="mailto:shagtagoney@gmail.com" class="btn btn-custom-blue">
                         <i class="fa-regular fa-envelope me-2"></i> Email Me
                     </a>
-                    <a href="https://github.com/Shagtagoney1" target="_blank" class="btn btn-outline-light rounded-3 px-4">
+                    <a href="https://github.com/Shagtagoney1" target="_blank" class="btn btn-outline-custom">
                         <i class="fa-brands fa-github me-2"></i> GitHub Profile
                     </a>
-                    <a href="https://www.linkedin.com/in/apdishak0ur-apdilahi-n0ur-9a5325449" target="_blank" class="btn btn-outline-light rounded-3 px-4">
+                    <a href="https://www.linkedin.com/in/apdishak0ur-apdilahi-n0ur-9a5325449" target="_blank" class="btn btn-outline-custom">
                         <i class="fa-brands fa-linkedin me-2"></i> LinkedIn
                     </a>
                 </div>
@@ -326,7 +352,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="text-center text-white py-4 border-top border-secondary">
+        <footer class="text-center text-muted py-4 border-top">
             <small>&copy; 2026 Abdishakour Abdilahi Nour (Shagta Goney). Built with passion & code.</small>
         </footer>
 
